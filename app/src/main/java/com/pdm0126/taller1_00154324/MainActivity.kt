@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -74,11 +75,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AndroidPediaApp() {
 
-    var screen by remember { mutableStateOf("welcome") }
-    var currentQuestion by remember { mutableStateOf(0) }
-    var score by remember { mutableStateOf(0) }
-    var selectedAnswer by remember { mutableStateOf(-1) }
-    var answered by remember { mutableStateOf(false) }
+    var screen by rememberSaveable { mutableStateOf("welcome") }
+    var currentQuestion by rememberSaveable { mutableStateOf(0) }
+    var score by rememberSaveable { mutableStateOf(0) }
+    var selectedAnswer by rememberSaveable { mutableStateOf(-1) }
+    var answered by rememberSaveable { mutableStateOf(false) }
 
     when (screen) {
 

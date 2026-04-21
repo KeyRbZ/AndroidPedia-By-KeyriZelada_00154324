@@ -135,11 +135,11 @@ fun WelcomeScreen(onStart: () -> Unit) {
         Text("AndroidPedia", style = MaterialTheme.typography.headlineLarge)
         Text("¿Cuánto sabes de Android?")
 
-        Spacer(modifier = Modifier.height(16.dp))
+        VerticalSpacer(16)
 
         Text("Keyri Margarita Zelada Barrientos - 00154324")
 
-        Spacer(modifier = Modifier.height(24.dp))
+        VerticalSpacer(24)
 
         Button(onClick = onStart) {
             Text("Comenzar Quiz")
@@ -167,7 +167,7 @@ fun QuizScreen(
         Text("Pregunta $questionNumber de $totalQuestions")
         Text("Puntaje: $score / $totalQuestions")
 
-        Spacer(modifier = Modifier.height(16.dp))
+        VerticalSpacer(16)
 
         Card(modifier = Modifier.fillMaxWidth()) {
             Text(
@@ -176,7 +176,7 @@ fun QuizScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        VerticalSpacer(16)
 
         question.options.forEachIndexed { index, option ->
             val color = when {
@@ -203,9 +203,9 @@ fun QuizScreen(
         }
 
         if (answered) {
-            Spacer(modifier = Modifier.height(16.dp))
+            VerticalSpacer(16)
             Text("💡 ${question.funFact}")
-            Spacer(modifier = Modifier.height(16.dp))
+            VerticalSpacer(16)
             Button(onClick = onNext) {
                 Text(if (questionNumber == totalQuestions) "Ver Resultado" else "Siguiente")
             }
@@ -230,15 +230,20 @@ fun ResultScreen(score: Int, total: Int, onRestart: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Resultado Final", style = MaterialTheme.typography.headlineLarge)
-        Spacer(modifier = Modifier.height(16.dp))
+        VerticalSpacer(16)
         Text("Obtuviste $score de $total")
-        Spacer(modifier = Modifier.height(16.dp))
+        VerticalSpacer(16)
         Text(message)
-        Spacer(modifier = Modifier.height(24.dp))
+        VerticalSpacer(24)
         Button(onClick = onRestart) {
             Text("Reiniciar Quiz")
         }
     }
+}
+
+@Composable
+fun VerticalSpacer(height: Int) {
+    Spacer(modifier = Modifier.height(height.dp))
 }
 
 fun isAnswerCorrect(question: Question, selectedIndex: Int): Boolean {
